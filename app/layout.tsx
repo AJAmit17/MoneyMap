@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/provider/themeProvider";
 import { ClerkProvider } from "@clerk/nextjs";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React from "react";
+import WrapQuery from "@/components/WrapQuery";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,14 +30,16 @@ export default function RootLayout({
     >
       <html suppressHydrationWarning lang="en">
         <body className={inter.className}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
+          <WrapQuery>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+            </ThemeProvider>
+          </WrapQuery>
         </body>
       </html>
     </ClerkProvider>
