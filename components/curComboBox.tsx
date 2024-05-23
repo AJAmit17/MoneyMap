@@ -21,7 +21,7 @@ import SkeletonWrapper from "@/components/SkeletonWrapper";
 import { UserSettings } from "@prisma/client";
 import { toast } from "sonner";
 import { Currencies, Currency } from "@/lib/currency";
-import { UpdateUserCurrency } from "@/app/setup/_action/userSettinng";
+import { UpdateUserCurrency } from "@/actions/userSettinng";
 import { useMediaQuery } from "@/hooks/media-query";
 
 export function CurrencyComboBox() {
