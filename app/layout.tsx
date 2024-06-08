@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/provider/themeProvider";
 import { ClerkProvider } from "@clerk/nextjs";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import WrapQuery from "@/components/WrapQuery";
 
@@ -20,15 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider
-      appearance={{
-        elements: {
-          formButtonPrimary: "primary-gradient",
-          footerActionLink: "primary-text-gradient hover:text-primary-500",
-        },
-      }}
-    >
-      <html suppressHydrationWarning lang="en">
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
           <WrapQuery>
             <ThemeProvider
